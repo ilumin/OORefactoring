@@ -13,7 +13,8 @@ public class StringCalculator {
             // too complicate to change string
             // look like it duplicate code ?
             // long parameter ?
-            for (String n : s.substring(4).split("[\n"+ s.charAt(2) +"]")) {
+            char customSeparator = s.charAt(2);
+			for (String n : s.substring(4).split("[\n"+ customSeparator +"]")) {
                 returnValue += Integer.parseInt(n);
             }
             return returnValue;
