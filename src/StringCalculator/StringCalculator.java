@@ -11,9 +11,8 @@ public class StringCalculator {
             return 0;
         }
         
-        if (inputString.startsWith(DEFINE_CUSTOM_SEPARATOR)) {
+        if (hasCustomSeparator(inputString)) {
             char customSeparator = inputString.charAt(2);
-            
             String stringToCalculate = inputString.substring(4);
             
             return add(stringToCalculate, customSeparator);
@@ -21,6 +20,10 @@ public class StringCalculator {
             return add(inputString, STANDARD_SEPARATOR);
         }
     }
+
+	private boolean hasCustomSeparator(String inputString) {
+		return inputString.startsWith(DEFINE_CUSTOM_SEPARATOR);
+	}
 
 	private int add(String s, char customSeparator) {
 		int result = 0;
