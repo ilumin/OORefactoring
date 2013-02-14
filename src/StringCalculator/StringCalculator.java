@@ -20,10 +20,11 @@ public class StringCalculator {
             return returnValue;
         } else {
             int r = 0; // result
+            char customSeparator = ',';
             
             // too complicate to change string
             // look like it duplicate code
-            for (String n : s.split("[\n,]")) {
+            for (String n : s.split("[\n" + customSeparator + "]")) {
                 r += Integer.parseInt(n);
             }
             return r;
