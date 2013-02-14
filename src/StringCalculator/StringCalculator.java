@@ -1,17 +1,17 @@
 package StringCalculator;
 
 public class StringCalculator {
-    public int add(String s) {
-        if (s.isEmpty()) {
+    public int add(String inputString) {
+        if (inputString.isEmpty()) {
             return 0;
         }
         
         // to complicate to change string
-        if (s.startsWith("//")) {
-            char customSeparator = s.charAt(2);
+        if (inputString.startsWith("//")) {
+            char customSeparator = inputString.charAt(2);
             
             // Extract Local Variable (to use in new Extract Method)
-            String stringToCalculate = s.substring(4);
+            String stringToCalculate = inputString.substring(4);
             
             // Call that new Extract Method
             return add(stringToCalculate, customSeparator);
@@ -19,17 +19,17 @@ public class StringCalculator {
             char customSeparator = ',';
             
             // Call that new Extract Method
-            return add(s, customSeparator);
+            return add(inputString, customSeparator);
         }
     }
 
     // New method here
 	private int add(String s, char customSeparator) {
-		int r = 0; // result
+		int result = 0;
 		
 		for (String n : s.split("[\n" + customSeparator + "]")) {
-		    r += Integer.parseInt(n);
+		    result += Integer.parseInt(n);
 		}
-		return r;
+		return result;
 	}
 }
