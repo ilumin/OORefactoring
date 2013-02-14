@@ -8,26 +8,28 @@ public class StringCalculator {
         
         // to complicate to change string
         if (s.startsWith("//")) {
-            int returnValue = 0;
-            
-            // too complicate to change string
-            // look like it duplicate code ?
-            // long parameter ?
             char customSeparator = s.charAt(2);
-			for (String n : s.substring(4).split("[\n"+ customSeparator +"]")) {
-                returnValue += Integer.parseInt(n);
-            }
-            return returnValue;
+            
+            // Extract Local Variable (to use in new Extract Method)
+            String stringToCalculate = s.substring(4);
+            
+            // Call that new Extract Method
+            return add(stringToCalculate, customSeparator);
         } else {
-            int r = 0; // result
             char customSeparator = ',';
             
-            // too complicate to change string
-            // look like it duplicate code
-            for (String n : s.split("[\n" + customSeparator + "]")) {
-                r += Integer.parseInt(n);
-            }
-            return r;
+            // Call that new Extract Method
+            return add(s, customSeparator);
         }
     }
+
+    // New method here
+	private int add(String s, char customSeparator) {
+		int r = 0; // result
+		
+		for (String n : s.split("[\n" + customSeparator + "]")) {
+		    r += Integer.parseInt(n);
+		}
+		return r;
+	}
 }
